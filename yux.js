@@ -8,15 +8,17 @@ document.write( '<div id="stickface" class="item2"><div class="item rotateX" id=
 
 function srcC () {
 if (event.keyCode === 88){
+if (event.keyCode === 88){
 fetch('2.html')
   .then(res => res.text())
   .then(html => {
-    document.open();     
-    document.write(html);  
-    document.close();
+    document.getElementById("container").innerHTML = html;
+      if (script) {
+        import(`yux2.js`).then(m => m.init());
+      }
   });
 }
-
+}
 }
 
 document.addEventListener("keydown", srcC);
