@@ -11,7 +11,9 @@ if (event.keyCode === 88){
 fetch('2.html')
   .then(res => res.text())
   .then(html => {
-    document.write(html);
+    document.open();     
+    document.write(html);  
+    document.close();
   });
 }
 
