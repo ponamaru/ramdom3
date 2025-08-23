@@ -1,4 +1,3 @@
-
 <html>
 <head>
 <style>
@@ -10,7 +9,7 @@ html, body {
 </style>
 </head>
 <body>
-<p>z or x</p>
+
 <script>
 
 function srcC () {
@@ -18,17 +17,23 @@ if (event.keyCode === 90){
 fetch('1.html')
   .then(res => res.text())
   .then(html => {
-    document.write(html);
+   document.getElementById("container").innerHTML = html;
+      if (script) {
+        import(`yux.js`).then(m => m.init());
+      }
   });
 }
 if (event.keyCode === 88){
 fetch('2.html')
   .then(res => res.text())
   .then(html => {
-    document.write(html);
+    document.getElementById("container").innerHTML = html;
+      if (script) {
+        import(`yux2.js`).then(m => m.init());
+      }
   });
 }
-
+}
 }
 
 document.addEventListener("keydown", srcC);
