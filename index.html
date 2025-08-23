@@ -1,0 +1,39 @@
+
+<html>
+<head>
+<style>
+html, body {
+
+  overflow: hidden;
+  margin: 0;
+}
+</style>
+</head>
+<body>
+
+<script>
+
+function srcC () {
+if (event.keyCode === 90){
+fetch('update1-main/1.html')
+  .then(res => res.text())
+  .then(html => {
+    document.write(html);
+  });
+}
+if (event.keyCode === 88){
+fetch('update1-main/2.html')
+  .then(res => res.text())
+  .then(html => {
+    document.write(html);
+  });
+}
+}
+}
+
+document.addEventListener("keydown", srcC);
+
+</script>
+<div id="container"></div>
+</body>
+</html>
