@@ -18,9 +18,9 @@ fetch('1.html')
   .then(res => res.text())
   .then(html => {
    document.getElementById("container").innerHTML = html;
-      if (script) {
+
         import(`yux.js`).then(m => m.init());
-      }
+
   });
 }
 if (event.keyCode === 88){
@@ -28,9 +28,9 @@ fetch('2.html')
   .then(res => res.text())
   .then(html => {
     document.getElementById("container").innerHTML = html;
-      if (script) {
+
         import(`yux2.js`).then(m => m.init());
-      }
+
   });
 }
 }
