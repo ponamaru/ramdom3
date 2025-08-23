@@ -6,21 +6,17 @@ document.write( '<img src="stick.png" id="leftleg" class="leftleg" width="600">'
 document.write( '<img src="stick.png" id="rightleg" class="rightleg" width="600">' );
 document.write( '<div id="stickface" class="item2"><div class="item rotateX" id="face2" width="600"><img src="stickhead.png" id="stickhead" type="file1" class="red" width="600"><div class="re-wrap" id="stickeye3"><img src="stickeye3.png" id="stickeye" class="re" width="600"></div><img src="mouth.png" id="stickmouth" class="op0" width="600"></div></div>' );
 
-function srcC () {
-if (event.keyCode === 88){
-if (event.keyCode === 88){
-fetch('2.html')
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById("container").innerHTML = html;
-      if (script) {
-        import(`yux2.js`).then(m => m.init());
-      }
-  });
-}
-}
-}
-
+const audio = new Audio('デジャブプール.mp3');
+        document.addEventListener("keydown", function(event) {
+            // 矢印キー（←↑→↓）のデフォルト動作を無効化
+            if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key)) {
+                event.preventDefault();
+            }
+        });
+addEventListener('click', () => {
+audio.play();
+audio.loop = true;
+});
 
 var y = 300;
 var x = 500;
