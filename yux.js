@@ -21,7 +21,6 @@ fetch('2.html')
 }
 }
 
-document.addEventListener("keydown", srcC);
 
 var y = 300;
 var x = 500;
