@@ -16,7 +16,7 @@ function srcC(e) {
       .then(res => res.text())
       .then(html => {
         document.getElementById("container").innerHTML = html;
-        import('./yux.js').then(m => m.init());
+        import('yux.js').then(m => m.init());
       });
   }
 
@@ -25,7 +25,7 @@ function srcC(e) {
       .then(res => res.text())
       .then(html => {
         document.getElementById("container").innerHTML = html;
-        import('./yux2.js').then(m => m.init());
+        import('yux2.js').then(m => m.init());
       });
   }
 }
