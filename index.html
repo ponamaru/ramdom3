@@ -11,12 +11,15 @@ html, body {
 
 <script type="module">
 function srcC(e) {
-  if (e.keyCode === 90) { 
+  if (e.keyCode === 90) {
     fetch('1.html')
       .then(res => res.text())
       .then(html => {
         document.getElementById("container").innerHTML = html;
-        import('yux.js').then(m => m.init());
+
+        let script = document.createElement("script");
+        script.src = "yux.js";
+        document.body.appendChild(script);
       });
   }
 
@@ -25,13 +28,16 @@ function srcC(e) {
       .then(res => res.text())
       .then(html => {
         document.getElementById("container").innerHTML = html;
-        import('yux2.js').then(m => m.init());
+
+        let script = document.createElement("script");
+        script.src = "yux2.js";
+        document.body.appendChild(script);
       });
   }
 }
-
 document.addEventListener("keydown", srcC);
 </script>
+
 
 <div id="container"></div>
 </body>
