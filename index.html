@@ -18,8 +18,12 @@ fetch('1.html')
   .then(res => res.text())
   .then(html => {
    document.getElementById("container").innerHTML = html;
+fetch("yux.js")
+  .then(res => res.text())
+  .then(code => {
+    eval(code);  // その場で実行
+  });
 
-        import(`yux.js`).then(m => m.init());
 
   });
 }
@@ -29,7 +33,11 @@ fetch('2.html')
   .then(html => {
     document.getElementById("container").innerHTML = html;
 
-        import(`yux2.js`).then(m => m.init());
+fetch("yux.js")
+  .then(res => res.text())
+  .then(code => {
+    eval(code);  // その場で実行
+  });
 
   });
 }
