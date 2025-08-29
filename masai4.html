@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html, body {
+  background-color: black;
+  overflow: hidden;
+  margin: 0;
+}
+#vi {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+
+}
+#bo1 {
+  position: absolute;
+  top: 80%;
+  left: 1%;
+}
+#bo2 {
+  transform: rotate(90deg); 
+  position: absolute;
+  top: 80%;
+  left: 10%;
+  display: none;
+}
+#bo4 {
+  position: absolute;
+  top: 80%;
+  left: 10%;
+  display: inline-block;
+  animation: floatUpDown 2s ease-in-out infinite;
+}
+#bo3 {
+  transform: rotate(180deg); 
+  position: absolute;
+  top: 80%;
+  left: 20%;
+}
+#bT2 {
+  color: #FFF;
+  background-color: rgba(0,0,0,0.5);
+
+  top: 80%;
+  left: 20%;
+  z-index: 1005;  
+position: absolute;
+}
+#vi2 {  
+position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  display: none;
+  pointer-events: none; 
+}
+#vi3 {  
+position: absolute;
+  top: 0;
+  left: 20%;
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: auto; 
+
+}
+@keyframes floatUpDown {
+  0%   { transform: rotate(90deg) translateX(0); }
+  50%  { transform: rotate(90deg) translateX(-10px); }
+  100% { transform: rotate(90deg) translateX(0); }
+}
+#area {
+  display: block;
+  color: #FFF;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  pointer-events: none; 
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1000;
+}
+#btext {
+  display: block;
+  color: #FFF;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1005;
+}
+#obb1,#obb2,#obb3,#obb4,#obb5,#obb6 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20%; 
+  height: auto;
+  display: none;
+
+}
+.catch {
+  transform: translate(-50%, -50%);
+}
+
+</style>
+</head>
+<body>
+
+<img src="14.png" id="vi" width="140%">
+<div id="vi2"><div id="vi3">
+<img src="16.png" id="obb1" width="500" class="catch">
+<img src="16.png" id="obb2" width="500" class="catch">
+<img src="16.png" id="obb3" width="500" class="catch">
+<img src="16.png" id="obb4" width="500" class="catch">
+<img src="16.png" id="obb5" width="500" class="catch">
+<img src="16.png" id="obb6" width="500" class="catch">
+</div></div>
+<img src="イラスト13.png" id="bo1" width="10%">
+<img src="イラスト13.png" id="bo2" width="10%">
+<img src="イラスト13.png" id="bo3" width="10%">
+<div id="area"></div>
+<img src="イラスト13.png" id="bo4" width="10%">
+<script>
+const vi = document.getElementById("vi");
+const vi2 = document.getElementById("vi2");
+
+window.onload = function() {
+  const adjustPosition = () => {
+    const winW = window.innerWidth;
+    const winH = window.innerHeight;
+    const imgW = vi.offsetWidth;
+    const imgH = vi.offsetHeight;
+    const leftPos = (winW / 2 - imgW / 2);
+    const topPos = (winH / 2 - imgH / 2);
+    vi.style.left = leftPos + "px";
+    vi.style.top = topPos + "px";
+    vi2.style.left = leftPos + "px";
+    vi2.style.top = "50%";
+  };
+
+  if (vi.complete) {
+    adjustPosition();
+  } else {
+    vi.onload = adjustPosition;
+  }
+};
+var backS = ["IMG_0389.jpeg","IMG_0392.jpeg","IMG_0391.jpeg"];
+var backSS = [backS,["IMG_0396.jpeg","IMG_0398.jpeg","IMG_0397.jpeg"],["IMG_0399.jpeg","IMG_0401.jpeg","IMG_0400.jpeg"]];
+var backN = 0;
+var backNN = 0;
+//["width","top","left","image.src","none","display","scene","serif","z","event","speed","backN","backNN"]
+
+var spF = [["20%","30%","30%","16.png","block",backSS[1][2],0,30,"no",20,1,2],["20%","30%","40%","イラスト15.png","block",backSS[0][2],1,30,"no",20,0,2]];
+var spFs = [spF,
+[["20%","50%","50%","16.png","block",backSS[0][0],1,10,"catch",25,0,0],
+["20%","0%","0%","イラスト15.png","none",backSS[1][0],0,30,"catch",25,1,0]],
+
+[["20%","0%","0%","16.png","none",backSS[1][2],0,30,"no",21,1,2],
+["20%","0%","56%","16.png","block",backSS[0][0],0,30,"no",10,0,0]],
+
+[["20%","0%","0%","16.png","none",backSS[1][2],0,30,"no",20,1,2]],
+
+[["20%","0%","0%","16.png","none",backSS[1][2],0,30,"no",20,1,2]]];
+
+vi.src = backSS[backN][backNN];
+vi.style.width = "140%";
+let eventB = "";
+var con = true;
+// イージング関数
+function easeIn(t) {
+  return t * t * t;
+}
+function easeOut(t) {
+  return 1 - Math.pow(1 - t, 3);
+}
+
+// 加速アニメーション（左に移動）
+function animateIn(startX, endX, duration, onComplete) {
+  const startTime = performance.now();
+
+  function animate(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = easeIn(progress);
+    vi.style.left = startX + (endX - startX) * eased + "px";
+vi2.style.left = startX + (endX - startX) * eased + "px";
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    } else if (onComplete) {
+      onComplete();
+    }
+  }
+
+  requestAnimationFrame(animate);
+}
+
+// 減速アニメーション（さらに移動）
+function animateOut(startX, endX, duration) {
+  const startTime = performance.now();
+  function animate(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = easeOut(progress);
+    
+if(eventB === "bo1"){
+vi.style.left = startX -500 + (endX - startX) * eased + "px";
+vi2.style.left = startX -500 + (endX - startX) * eased + "px";
+}
+if(eventB === "bo3"){
+vi.style.left = startX +500 + (endX - startX) * eased + "px";
+vi2.style.left = startX +500 + (endX - startX) * eased + "px";
+}
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    }
+  }
+
+  requestAnimationFrame(animate);
+}
+
+document.getElementById("bo1").addEventListener("click", () => {
+if(con === true) {
+con = false;
+setTimeout(() => {
+con = true;
+bo4B();
+backA = true;
+}, "500");
+  eventB = "bo1";
+  red();
+left();
+
+  const startX = parseFloat(vi.style.left) || 0;
+  const midX = startX + 200;
+  const endX = startX + 500;
+
+  animateIn(startX, midX, 250, () => {
+    animateOut(midX, endX, 250);
+  });
+}
+});
+
+document.getElementById("bo3").addEventListener("click", () => {
+if(con === true) {
+con = false;
+setTimeout(() => {
+con = true;
+bo4B();
+
+}, "500");
+  eventB = "bo3";
+  red();
+right();
+  const startX = parseFloat(vi.style.left) || 0;
+  const midX = startX - 200;
+  const endX = startX - 500;
+
+  animateIn(startX, midX, 250, () => {
+    animateOut(midX, endX, 250);
+
+  });
+}
+});
+
+
+var serifS = [["Hello.","Wellcome to the school."],["a"]];
+var serifSS = [serifS,[["see you"],["b"]],[["see you"],["b"]],[["see you"],["b"]],[["see you"],["b"]],[["see you"],["b"]]]
+var serifN = 0;
+var serifNN = 0;
+var talk = false;
+var obs = [document.getElementById("obb1"),document.getElementById("obb2"),document.getElementById("obb3"),document.getElementById("obb4"),document.getElementById("obb5"),document.getElementById("obb6")];
+var obn = 0;
+var imgE = document.getElementsByTagName('img');
+
+document.getElementById("vi3").addEventListener("click", () => {
+obn = obs.indexOf(event.target);
+if(con === true) {
+serifNN = 0;
+talk = true;
+for (let i = 0; i < spF.length; i++) {
+if(backSS[backN][backNN] === spFs[obn][i][5]){
+serifN = spFs[obn][i][6];
+}
+}
+con = false;
+}
+talkF();
+
+});
+
+function talkF (){
+if((serifNN < serifSS[obn][serifN].length)&&(talk === true)) {
+document.getElementById("area").innerText = serifSS[obn][serifN][serifNN];
+serifNN += 1;
+talk = false;
+  setTimeout(() => {
+talk = true;
+  }, 250);
+}
+
+if((serifNN > serifSS[obn][serifN].length -1)&&(talk === true)){
+document.getElementById("area").innerText = null;
+con = true;
+serifNN = 0;
+talk = false;
+}
+}
+var backA = true;
+addEventListener("click", talkF);
+
+function red() {
+document.getElementById("bo4").style.display = "none";
+  document.getElementById(eventB).src = "イラスト14.png";
+backA = false;
+  setTimeout(() => {
+    document.getElementById(eventB).src = "イラスト13.png";
+backA = true;
+  }, 250);
+}
+
+function left (){
+backNN -= 1;
+if(backNN < 0)backNN = backSS[backN].length -1;
+if(backNN > backSS[backN].length -1)backNN = 0;
+  setTimeout(() => {
+vi.src = backSS[backN][backNN];
+vi2.style.display = "none";
+
+  }, 250);
+}
+function right (){
+backNN += 1;
+if(backNN < 1)backNN = backSS[backN].length -1;
+if(backNN > backSS[backN].length -1)backNN = 0;
+  setTimeout(() => {
+vi.src = backSS[backN][backNN];
+vi2.style.display = "none";
+
+  }, 250);
+
+}
+
+document.getElementById("bo4").addEventListener("click", () => {
+if(con === true) {
+backC();
+vi2.style.display = "none";
+
+document.getElementById("bo4").style.display = "none";
+con = false;
+setTimeout(() => {
+con = true;
+bo4B();
+backA = true;
+}, "500");
+}
+});
+
+function backC() {
+
+for (let i = 0; i < bo4xy.length; i++) {
+if(backSS[backN][backNN] === backSS[bo4xy[i][6]][bo4xy[i][7]]){
+backN = bo4xy[i][3];
+}
+}
+vi.src = backSS[backN][backNN];
+}
+
+var bo4xy = [["60%","25%",backSS[0][2],1,1000,1,0,2],["70%","40%",backSS[0][0],0,1000,null,0,0],["70%","40%",backSS[1][1],0,1000,2,1,1],["70%","40%",backSS[1][0],2,1000,null,1,0],["70%","30%",backSS[2][2],1,1000,null,2,2]];
+
+function bo4B () {
+for (let i = 0; i < bo4xy.length; i++) {
+if(backSS[backN][backNN] === backSS[bo4xy[i][6]][bo4xy[i][7]]){
+document.getElementById("bo4").style.display = "block";
+document.getElementById("bo4").style.top = bo4xy[i][0];
+document.getElementById("bo4").style.left = bo4xy[i][1];
+}
+}
+if(backSS[backN][backNN] === backSS[0][0]){
+document.getElementById("bo4").style.display = "none";
+}
+}
+function vi2B(){
+for (let s = 0; s < spFs.length; s++) {
+let found = false;
+for (let i = 0; i < spFs[s].length; i++) {
+if(backA === true){
+if(backSS[backN][backNN] === backSS[spFs[s][i][10]][spFs[s][i][11]]){
+vi2.style.display = "block";
+
+let widthPercent = 0;
+widthPercent = spFs[s][i][7] * 0.1;
+obs[s].style.width = parseFloat(spFs[s][i][0]) + widthPercent + "%";
+obs[s].style.top = spFs[s][i][1];
+obs[s].style.left = spFs[s][i][2];
+obs[s].style.display = spFs[s][i][4];
+obs[s].src = spFs[s][i][3];
+found = true;
+ break;  
+}
+}
+}
+if(!found){
+if(backA === true){
+obs[s].style.display = "none";
+}
+}
+}
+}
+
+function Zin() {
+document.getElementById("bo4").style.zIndex = 100;
+document.getElementById("bo1").style.zIndex = 101;
+document.getElementById("bo3").style.zIndex = 102;
+let zList = obs.map((el, index) => {
+let firstItem = spFs[index]?.[0];
+return firstItem ? firstItem[7] : 0;
+});
+
+let order = zList
+.map((z, idx) => ({ z, idx }))
+.sort((a, b) => a.z - b.z);
+order.forEach((item, rank) => {
+if (obs[item.idx]) {
+obs[item.idx].style.zIndex = rank + 1; 
+}
+});
+}
+let A;
+
+
+var objS = [];
+function catch2(){
+ const currentScene = backSS[backN][backNN];
+//chatGPT
+  let allObjs = [];
+  for (let i = 0; i < spFs.length; i++) {
+    for (let s = 0; s < spFs[i].length; s++) {
+      const obj = spFs[i][s];
+      if (obj[8] === "catch") {
+        allObjs.push(obj);
+      }
+    }
+  }
+//ここまで
+    const winW = window.innerWidth;
+    const winH = window.innerHeight;
+  for (let i = 0; i < allObjs.length; i++) {
+    A = allObjs[i];
+if(A[8] === "catch"){
+if(A[7] < 1000){
+    for (let j = 0; j < allObjs.length; j++) {
+
+//chatGPT
+      if (i === j) continue;
+      const B = allObjs[j];
+      const width50 = winW/2;
+      const height50 = winW/2;
+      const leftA = parseFloat(A[2])*winW/100;
+      const leftB = parseFloat(B[2])*winW/100;
+      const widthA = parseFloat(A[0])*winW/100;
+      const widthB = parseFloat(B[0])*winW/100;
+
+//ここまで
+if((leftA + widthA>= leftB) && (leftA  <= leftB + widthB)
+&&(A[7] < B[7] )&&(backSS[A[10]][A[11]] ===backSS[B[10]][B[11]])&&(B[4] ==="block")){
+
+let left2 = widthA - A[9]*1;
+let left = widthA + A[9]*1;
+
+if(leftA+widthA < leftB) A[2] = (left2 / winW * 100) + "%";
+if(leftB+widthB < leftA) A[2] =  (left / winW * 100) + "%";
+if(leftB === leftA){
+if(Math.random() * (1)===1){
+A[2] = (left2 / winW * 100) + "%";
+}else{
+A[2] =  (left / winW * 100) + "%";
+
+}
+}
+         
+}else{
+A[7] += A[9] * 1; 
+}
+}
+
+}
+    if (A[7] >= 1000 && backN !== A[10]) {
+let hou=[backN];
+for (let u = 0; u < hou.length; u++) {
+
+for (let w = 0; w < bo4xy.length; w++) {
+let Pr = backN;
+if(bo4xy[w][3] === hou[u]){
+hou[w] = bo4xy[w][6];
+if( A[10]===bo4xy[w][6]){
+
+
+if(backN !== A[10])A[7] -= bo4xy[w][4];
+A[10] = bo4xy[w][3];
+if(bo4xy[w][5] !== null) A[11] = bo4xy[w][5];
+break;
+}
+}
+
+
+}
+}
+} 
+}
+}
+}
+
+
+
+
+
+
+let intervalI3 = null;
+
+function catch3(){
+if (event.keyCode === 90&&!intervalI3){
+intervalI3 = setInterval(catch2, 50);
+}
+}
+
+function loop() {
+  Zin();
+  vi2B();
+
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+
+
+document.addEventListener("keydown", catch3);
+
+bo4B();
+
+
+</script>
+<div id="btext"></div>
+<div id="bT2"></div>
+</body>
+</html>
