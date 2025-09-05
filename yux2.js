@@ -5,6 +5,23 @@ document.write( '<img src="無題.png" id="ims" width="800">' );
                 event.preventDefault();
             }
         });
+
+function srcC(e) {
+
+  if (e.keyCode === 88) {
+    fetch('1.html')
+      .then(res => res.text())
+      .then(html => {
+        document.open();
+        document.write(html);
+        document.close();
+      });
+
+
+  }
+}
+document.addEventListener("keydown", srcC);
+
 document.write( '<div class="fadein2"><img src="black2.png" id="fadein" class="fadein" width="120%" height="120%"></div>' );
 document.write( '<img src="black2.png" id="black" class="op0" width="120%" height="100%">' );
 document.write( '<img src="stick.png" id="stickbody" width="600">' );
