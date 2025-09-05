@@ -9,6 +9,13 @@ document.write( '<img src="無題.png" id="ims" width="800">' );
 function srcC(e) {
 
   if (e.keyCode === 88) {
+	  document.removeEventListener("keydown", keydownfunc1);
+document.removeEventListener("keydown", Z);
+
+// setInterval 停止
+clearInterval(intervalID);
+clearInterval(intervalId);
+clearInterval(intervalId2);
     fetch('1.html')
       .then(res => res.text())
       .then(html => {
