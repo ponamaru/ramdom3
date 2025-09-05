@@ -9,6 +9,13 @@ document.write( '<div id="stickface" class="item2"><div class="item rotateX" id=
 function srcC(e) {
 
   if (e.keyCode === 88) {
+	  document.removeEventListener("keydown", keydownfunc1);
+document.removeEventListener("keydown", Z);
+
+// setInterval 停止
+clearInterval(intervalID);
+clearInterval(intervalId);
+clearInterval(intervalId2);
     fetch('2.html')
       .then(res => res.text())
       .then(html => {
