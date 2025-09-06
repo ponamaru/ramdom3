@@ -10,7 +10,9 @@ function srcC(e) {
 
   if (e.keyCode === 88) {
 
-
+document.removeEventListener("keydown", Z);
+document.removeEventListener("keydown", keydownfunc1);
+document.removeEventListener("keydown", keydownfunc2);
 clearInterval(walk);
 clearInterval(rrr);
 clearInterval(intervalmakita);
