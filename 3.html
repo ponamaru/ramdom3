@@ -1,32 +1,42 @@
 <html>
-  <div id="app"></div>
-<button id="load1">Load 1.html</button>
-<button id="load2">Load 2.html</button>
+<head>
+<style>
+html, body {
+  overflow: hidden;
+  margin: 0;
+}
+</style>
+</head>
+<body>
+<div id="container"></div>
 
-<script>
-async function loadPage(path) {
-  const app = document.getElementById("app");
+<script type="module">
+function loadPage(file) {
+  const container = document.getElementById("container");
 
 
-  app.innerHTML = "";
+  container.innerHTML = "";
 
 
-  const res = await fetch(path);
-  const html = await res.text();
-
-
-  app.innerHTML = html;
+  fetch(file)
+    .then(res => res.text())
+    .then(html => {
+      container.innerHTML = html;
+    });
 }
 
-document.getElementById("load1").addEventListener("click", () => {
-  loadPage("1.html");
-});
+function srcC(e) {
+  if (e.keyCode === 90) { // Z
+    loadPage("1.html");
+  }
 
-document.getElementById("load2").addEventListener("click", () => {
-  loadPage("2.html");
-});
+  if (e.keyCode === 88) { // X
+    loadPage("2.html");
+  }
+}
 
-loadPage("1.html");
+document.addEventListener("keydown", srcC);
 </script>
-
+</body>
 </html>
+
