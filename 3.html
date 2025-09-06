@@ -1,0 +1,32 @@
+<html>
+  <div id="app"></div>
+<button id="load1">Load 1.html</button>
+<button id="load2">Load 2.html</button>
+
+<script>
+async function loadPage(path) {
+  const app = document.getElementById("app");
+
+
+  app.innerHTML = "";
+
+
+  const res = await fetch(path);
+  const html = await res.text();
+
+
+  app.innerHTML = html;
+}
+
+document.getElementById("load1").addEventListener("click", () => {
+  loadPage("/partials/1.html");
+});
+
+document.getElementById("load2").addEventListener("click", () => {
+  loadPage("/partials/2.html");
+});
+
+loadPage("/partials/1.html");
+</script>
+
+</html>
