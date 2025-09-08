@@ -7,25 +7,20 @@ document.write( '<img src="stick.png" id="rightleg" class="rightleg" width="600"
 document.write( '<div id="stickface" class="item2"><div class="item rotateX" id="face2" width="600"><img src="stickhead.png" id="stickhead" type="file1" class="red" width="600"><div class="re-wrap" id="stickeye3"><img src="stickeye3.png" id="stickeye" class="re" width="600"></div><img src="mouth.png" id="stickmouth" class="op0" width="600"></div></div>' );
 
 function srcC(e) {
+  if (e.keyCode === 90) {
+  fetch('1.html')
+    .then(res => res.text())
+    .then(html => {
+      document.body.innerHTML = html;
+    });
+
+  }
 
   if (e.keyCode === 88) {
-
-document.removeEventListener("keydown", Z);
-document.removeEventListener("keydown", keydownfunc1);
-document.removeEventListener("keydown", keydownfunc2);
-clearInterval(walk);
-clearInterval(rrr);
-clearInterval(intervalmakita);
-clearInterval(makita);
-clearInterval(makita2);
-clearInterval(stagelink);
-clearInterval(bodylink);
     fetch('2.html')
       .then(res => res.text())
       .then(html => {
-        document.open();
-        document.write(html);
-        document.close();
+        document.body.innerHTML = html;
       });
 
 
