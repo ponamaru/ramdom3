@@ -25,7 +25,7 @@ function srcC(e) {
     fetch('2.html')
       .then(res => res.text())
       .then(html => {
-        document.write(html);
+        document.innerHTML = html;
       });
 
 
