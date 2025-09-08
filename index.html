@@ -13,15 +13,11 @@ html, body {
 
 function srcC(e) {
   if (e.keyCode === 90) {
-    fetch('1.html')
-      .then(res => res.text())
-      .then(html => {
-        document.open();
-        document.write(””);
-        document.write(html);
-        document.close();
-      });
-
+  fetch('1.html')
+    .then(res => res.text())
+    .then(html => {
+      document.innerHTML = html;
+    });
 
   }
 
