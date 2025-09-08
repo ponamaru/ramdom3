@@ -12,6 +12,9 @@ function srcC(e) {
     .then(res => res.text())
     .then(html => {
       document.body.innerHTML = html;
+      var script = document.createElement('script');
+script.src = "yux.js"; 
+document.body.appendChild(script); 
     });
 
   }
@@ -21,6 +24,10 @@ function srcC(e) {
       .then(res => res.text())
       .then(html => {
         document.body.innerHTML = html;
+var script = document.createElement('script');
+script.src = "yux2.js"; 
+document.body.appendChild(script); 
+
       });
 
 
