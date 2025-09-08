@@ -16,7 +16,7 @@ function srcC(e) {
   fetch('1.html')
     .then(res => res.text())
     .then(html => {
-      document.innerHTML = html;
+      document.body.innerHTML = html;
     });
 
   }
@@ -25,7 +25,7 @@ function srcC(e) {
     fetch('2.html')
       .then(res => res.text())
       .then(html => {
-        document.innerHTML = html;
+        document.body.innerHTML = html;
       });
 
 
