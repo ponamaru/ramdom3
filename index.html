@@ -8,6 +8,7 @@ html, body {
 </style>
 </head>
 <body>
+  <iframe id="myFrame"></iframe>
 <a href='3.html'></a>
 <script>
 
@@ -37,6 +38,14 @@ document.body.appendChild(script);
 
 
   }
+  if(e.keyCode === 65){
+    const iframe = document.getElementById("myFrame");
+  fetch("2.html")
+  .then(res => res.text())
+  .then(html => {
+    iframe.srcdoc = html; 
+  });
+}
 }
 document.addEventListener("keydown", srcC);
 </script>
