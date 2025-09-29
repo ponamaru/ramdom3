@@ -46,6 +46,14 @@ document.body.appendChild(script);
     iframe.srcdoc = html; 
   });
 }
+    if(e.keyCode === 66){
+    const iframe = document.getElementById("myFrame");
+  fetch("1.html")
+  .then(res => res.text())
+  .then(html => {
+    iframe.srcdoc = html; 
+  });
+}
 }
 document.addEventListener("keydown", srcC);
 </script>
