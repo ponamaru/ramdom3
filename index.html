@@ -13,31 +13,7 @@ html, body {
 <script>
 
 function srcC(e) {
-  if (e.keyCode === 90) {
-  fetch('1.html')
-    .then(res => res.text())
-    .then(html => {
-      document.body.innerHTML = html;
-      var script = document.createElement('script');
-script.src = "yux.js"; 
-document.body.appendChild(script); 
-    });
 
-  }
-
-  if (e.keyCode === 88) {
-    fetch('2.html')
-      .then(res => res.text())
-      .then(html => {
-        document.body.innerHTML = html;
- var script = document.createElement('script');
-script.src = "yux2.js"; 
-document.body.appendChild(script); 
-
-      });
-
-
-  }
   if(e.keyCode === 65){
     const iframe = document.getElementById("myFrame");
   fetch("2.html")
